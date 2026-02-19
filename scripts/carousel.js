@@ -71,3 +71,5 @@ document.querySelectorAll('.carousel').forEach((carousel) => {
   // Initialize visual state
   updateScrollBar();
 });
+
+

@@ -34,7 +34,7 @@ document.querySelector('.mobile-overlay').addEventListener('click', toggleMobile
 
 
 
-// Toggle units
+// Toggle bike size units
 // Get both unit options
 const unitOptions = document.querySelectorAll('.toggle-measurement-unit .unit-option');
 const sizeRanges = document.querySelectorAll('.size-range');
@@ -42,7 +42,7 @@ const sizeRanges = document.querySelectorAll('.size-range');
 unitOptions.forEach(option => {
     option.addEventListener('click', () => {
         // Remove active from both
-        unitOptions.forEach(o => o.classList.remove('active'));
+        unitOptions.forEach(currentItem => currentItem.classList.remove('active'));
         // Add active to clicked one
         option.classList.add('active');
 
@@ -52,7 +52,7 @@ unitOptions.forEach(option => {
             if (unit === 'cm') {
                 range.textContent = range.dataset.cm + ' cm';
             } else {
-                range.textContent = range.dataset.inches + ' in';
+                range.textContent = range.dataset.feet;
             }
         });
     });
@@ -62,10 +62,24 @@ unitOptions.forEach(option => {
 
 
 
+// make selected frame size box active
+const sizeBoxes = document.querySelectorAll('.size-box');
+
+sizeBoxes.forEach(currentItem => {
+    currentItem.addEventListener('click', () => {
+        // remove active from all boxes
+        sizeBoxes.forEach(sizeBox => sizeBox.classList.remove('active'));
+        // add active to clicked size box
+        currentItem.classList.add('active');
+    });
+});
+
+
+
+
 
 // percentage discount calculator
 
-// Discount calculation function
 function updateAllDiscounts() {
   const carousels = document.querySelectorAll(".carousel");
 
@@ -114,6 +128,76 @@ document.addEventListener("DOMContentLoaded", () => {
       characterData: true, // watch for text changes
     });
   });
+});
+
+
+
+// increment / decrement quantity
+
+document.addEventListener('DOMContentLoaded', () => {
+  // quantity increment/decrement
+  document.querySelectorAll('.quantity-box').forEach(box => {
+    const input = box.querySelector('.quantity');
+    const increment = box.querySelector('.increment');
+    const decrement = box.querySelector('.decrement');
+
+    increment.addEventListener('click', () => {
+      input.value = parseInt(input.value, 10) + 1;
+    });
+
+    decrement.addEventListener('click', () => {
+      input.value = Math.max(parseInt(input.value, 10) - 1, parseInt(input.min, 10));
+    });
+  });
+
+  // make selected size box active
+  const sizeBoxes = document.querySelectorAll('.size-box');
+  sizeBoxes.forEach(currentItem => {
+    currentItem.addEventListener('click', () => {
+      sizeBoxes.forEach(sizeBox => sizeBox.classList.remove('active'));
+      currentItem.classList.add('active');
+    });
+  });
+
+  // open sizing-menu
+  const sizingGuide = document.querySelector('.sizing-guide');
+  const sizingMenu = document.querySelector('.sizing-menu');
+  const arrows = sizingGuide.querySelectorAll('svg');
+  const arrowDown = arrows[0]; // 
+  const arrowUp = arrows[1];   // 
+
+  sizingGuide.addEventListener('click', () => {
+    const isOpen = sizingMenu.classList.toggle('open');
+
+    if (isOpen) {
+      arrowDown.style.display = 'none';
+      arrowUp.style.display = 'inline';
+    } else {
+      arrowDown.style.display = 'inline';
+      arrowUp.style.display = 'none';
+    }
+  });
+});
+
+
+
+// open sizing-menu
+const sizingGuide = document.querySelector('.sizing-guide');
+const sizingMenu = document.querySelector('.sizing-menu');
+const arrows = sizingGuide.querySelectorAll('svg');
+const arrowDown = arrows[0]; // first SVG
+const arrowUp = arrows[1];   // second SVG
+
+sizingGuide.addEventListener('click', () => {
+    const isOpen = sizingMenu.classList.toggle('.open');
+
+    if (isOpen) {
+        arrowDown.style.display = 'none';
+        arrowUp.style.display = 'inline';
+    } else {
+        arrowDown.style.display = 'inline';
+        arrowUp.style.display = 'none';
+    }
 });
 
 

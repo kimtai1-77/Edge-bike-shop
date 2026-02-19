@@ -4,10 +4,11 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
-        <link rel="stylesheet" href="./styles.css">
-        <script src="./main.js" defer></script>
-        <script src="./scripts/index.js" defer></script>
-        <script src="./scripts/carousel.js" defer></script>
+        <link rel="stylesheet" href="../styles.css">
+        <script src="../main.js" defer></script>
+        <script src="../scripts/orbea-laufey-h10.js" defer></script>
+        <script src="../scripts/carousel.js" defer></script>
+        <script src="../scripts/compare.js" defer></script>
 
         <!--Sora-->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,7 +21,7 @@
                 <h3>Click here for 30% off - 3 days left!</h3>
             </div>
             <div class="search-bar">
-                <img src="./images/EDGE logo - dark brown.png" alt="edge-logo" width="96px" height="auto">
+                <img src="../images/EDGE logo - dark brown.png" alt="edge-logo" width="96px" height="auto">
                 <form action="/search" method="get">
                     <div class="search-box hide-on-mobile">
                         <input type="text" name="q" placeholder="Search for product">
@@ -80,7 +81,7 @@
             <div class="product-main-cont">
                 <div class="main-product-img-cont">
                     <div>
-                        <img class="main-product-img" src="./images/LAUFEY_copper_main_cropped.png" alt="">
+                        <img class="main-product-img" src="../images/Orbea_Laufey_H10_copper_cropped.webp" alt="">
                     </div>
                 </div>
                 <!--<div class="bike-images-cont">
@@ -92,7 +93,7 @@
                     <h4>Orbea Laufey H10</h4>
                 </div>
                 <div class="price-cont">
-                <h2>AED. 8495.00</h2>
+                    <h2>AED. 8495.00</h2>
                 </div>
                 <div class="color-box-cont">
                     <p>Color:</p>
@@ -115,6 +116,13 @@
                             <button class="notify-cancel">Cancel</button>
                         </div>
                     </div>
+                    <div class="pre-order-dropdown">
+                        <p>Would you like to pre-order?</p>
+                        <div class="notify-buttons">
+                            <button class="pre-order-yes">Yes</button>
+                            <button class="pre-order-cancel">Cancel</button>
+                        </div>
+                    </div>
                 </div>
                 <div class="size-box-wrapper">
                     <div class="size-box-inner">
@@ -126,50 +134,52 @@
                             <div class="size-box">XL</div>
                         </div>
                     </div>
-                    <div class="sizing-guide">
-                        Sizing guide
-                        <svg class="arrow-down" xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960" width="32px" fill="currentColor"><path d="M480-360 280-560h400L480-360Z"/></svg>
-                        <svg class="arrow-up" xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960" width="32px" fill="currentColor"><path d="m280-400 200-200 200 200H280Z"/></svg>
-                    </div>
-                    <div class="sizing-menu">
-                        <div class="size-row-cont">
-                            <div class="size-row">
-                                <div class="size-label">S</div>
-                                <div class="size-range" data-cm="163 --- 172" data-inches="64 ---- 68">
-                                    163 --- 172 cm
+                    <div class="sizing-cont">
+                        <div class="sizing-guide">
+                            Sizing guide
+                            <svg class="arrow-down" xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960" width="32px" fill="currentColor"><path d="M480-360 280-560h400L480-360Z"/></svg>
+                            <svg class="arrow-up" xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960" width="32px" fill="currentColor"><path d="m280-400 200-200 200 200H280Z"/></svg>
+                        </div>
+                        <div class="sizing-menu">
+                            <div class="size-row-cont">
+                                <div class="size-row">
+                                    <div class="size-label">S</div>
+                                    <div class="size-range" data-cm="163 --- 172" data-feet="5' 3&quot; --- 5' 6&quot;">
+                                        163 --- 172 cm
+                                    </div>
+                                </div>
+                                <div class="size-row">
+                                    <div class="size-label">M</div>
+                                    <div class="size-range" data-cm="171 --- 180" data-feet="5' 6&quot; --- 5' 9&quot;">
+                                        171 --- 180 cm
+                                    </div>
+                                </div>
+                                <div class="size-row">
+                                    <div class="size-label">L</div>
+                                    <div class="size-range" data-cm="179 --- 188" data-feet="5' 8&quot; --- 6' 2&quot;">
+                                        179 --- 188 cm
+                                    </div>
+                                </div>
+                                <div class="size-row">
+                                    <div class="size-label">XL</div>
+                                    <div class="size-range" data-cm="187 --- 196" data-feet="6' 1&quot; --- 6' 4&quot;">
+                                        187 --- 196 cm
+                                    </div>
                                 </div>
                             </div>
-                            <div class="size-row">
-                                <div class="size-label">M</div>
-                                <div class="size-range" data-cm="171 --- 180" data-inches="67 ---- 71">
-                                    171 --- 180 cm
-                                </div>
-                            </div>
-                            <div class="size-row">
-                                <div class="size-label">L</div>
-                                <div class="size-range" data-cm="179 --- 188" data-inches="70 ---- 74">
-                                    179 --- 188 cm
-                                </div>
-                            </div>
-                            <div class="size-row">
-                                <div class="size-label">XL</div>
-                                <div class="size-range" data-cm="187 --- 196" data-inches="73 --- 77">
-                                    187 --- 196 cm
+                            <div class="toggle-measurement-unit">
+                                <div class="unit-toggle">
+                                    <div class="unit-option active" data-unit="cm">
+                                        cm
+                                    </div>
+                                    <div class="unit-option" data-unit="inches">
+                                        feet
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="toggle-measurement-unit">
-                            <div class="unit-toggle">
-                                <div class="unit-option active" data-unit="cm">
-                                    cm
-                                </div>
-                                <div class="unit-option" data-unit="inches">
-                                    inches
-                                </div>
-                            </div>
-                        </div>
                     </div>
-                </div>               
+                </div>
                 <div class="quantity-cont">
                     <div class="quantity-box">
                         <button type="button" class="decrement">-</button>
@@ -179,33 +189,33 @@
                     <div class="button btn-main">
                         ADD TO CART
                     </div>
-                </div>
+                </div>        
                 <div class="payment-options-wrapper">
                     <div class="payment-options-cont">
-                        <img src="./images/Visa_cropped (1).png" alt="Visa credit card">
+                        <img src="../images/Visa_cropped (1).png" alt="Visa credit card">
                     </div>
                     <div class="payment-options-cont">
-                        <img src="./images/Mastercard_cropped (1).png" alt="Mastercard credit card">
+                        <img src="../images/Mastercard_cropped (1).png" alt="Mastercard credit card">
                     </div>
                     <div class="payment-options-cont">
-                        <img src="./images/JCB_cropped.png" alt="JCB credit card">
+                        <img src="../images/JCB_cropped.png" alt="JCB credit card">
                     </div>
                     <div class="payment-options-cont">
-                        <img src="./images/amex.png" alt="American express credit card">
+                        <img src="../images/amex.png" alt="American express credit card">
                     </div>
                     <div class="payment-options-cont">
-                        <img src="./images/discover_card_cropped.webp" alt="Discover credit card">
+                        <img src="../images/discover_card_cropped.webp" alt="Discover credit card">
                     </div>
                     <div class="payment-options-cont">
-                        <img src="./images/google-pay_cropped.webp" alt="Google pay payment option">
+                        <img src="../images/google-pay_cropped.webp" alt="Google pay payment option">
                     </div>
                     <div class="payment-options-cont">
-                        <img src="./images/apple-pay-logo.png" alt="Apple pay payment options">
+                        <img src="../images/apple-pay-logo.png" alt="Apple pay payment options">
                     </div>
                 </div>
                 <div class="wishlist-box">
                     <button class="block with-img">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#b3aeae"><path d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Zm0-108q96-86 158-147.5t98-107q36-45.5 50-81t14-70.5q0-60-40-100t-100-40q-47 0-87 26.5T518-680h-76q-15-41-55-67.5T300-774q-60 0-100 40t-40 100q0 35 14 70.5t50 81q36 45.5 98 107T480-228Zm0-273Z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="18pxpx" viewBox="0 -960 960 960" width="18px" fill="#c18a2a"><path d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Zm0-108q96-86 158-147.5t98-107q36-45.5 50-81t14-70.5q0-60-40-100t-100-40q-47 0-87 26.5T518-680h-76q-15-41-55-67.5T300-774q-60 0-100 40t-40 100q0 35 14 70.5t50 81q36 45.5 98 107T480-228Zm0-273Z"/></svg>
                         Save
                     </button>
                     <button type="button" class="block">
@@ -268,14 +278,6 @@
                     </div>
                     <div class="description">
                         <p>Shimano CS-M7100 10-51t 12-Speed</p>
-                    </div>
-                </div>
-                <div class="part-description">
-                    <div class="part">
-                        <p>Rear derailleur</p>
-                    </div>
-                    <div class="description">
-                        <p>Shimano XT M8100 SGS Shadow Plus</p>
                     </div>
                 </div>
                 <div class="part-description">
@@ -392,11 +394,11 @@
                 <!-- Carousel Items Container (scrollable area) -->
                 <div class="carousel-items">
 
-                    <!--card 1-->
-                    <div class="card">
+                    <!--card 1 - Helmet-->
+                    <a href="" class="card">
                         <div class="card-img-cont">
                             <p class="card-discount"></p>
-                            <img src="./images/Helmet.png" alt="Helmet" class="card-img"> 
+                            <img src="../images/Helmet.png" alt="Helmet" class="card-img"> 
                         </div>
                         <div class="card-info">
                             <h5 class="card-product">Helmet</h5>
@@ -409,16 +411,16 @@
                             View options
                         </div>
                         
-                    </div>
+                    </a>
 
-                    <!--card 2-->
-                    <div class="card">
+                    <!--card 2 - Bottle cage-->
+                    <a href="" class="card">
                         <div class="card-img-cont">
                             <p class="card-discount"></p>
-                            <img src="./images/Bottle_cage.png" alt="Bottle cage" class="card-img">
+                            <img src="../images/Bottle_cage.png" alt="Bottle cage" class="card-img">
                         </div>
                         <div class="card-info">
-                            <h5 class="card-product">Cannibal XC</h5>
+                            <h5 class="card-product">Cannibal XC Bottle Cage</h5>
                             <div class="card-price-cont">
                                 <p class="card-old-price">AED. 470</p>
                                 <p class="card-price">AED. 420</p>
@@ -427,13 +429,13 @@
                         <div class="carousel-btn">
                             view options
                         </div>
-                    </div>
+                    </a>
                     
-                    <!--card 3-->
-                    <div class="card">
+                    <!--card 3 - Camelbak Podium Water Bottle-->
+                    <a href="" class="card">
                         <div class="card-img-cont">
                             <p class="card-discount"></p>
-                            <img src="./images/Water_bottle.png" alt="Water bottle" class="card-img">
+                            <img src="../images/Water_bottle.png" alt="Water bottle" class="card-img">
                         </div>
                         <div class="card-info">
                             <h5 class="card-product">Camelbak Podium Water Bottle 750ml</h5>
@@ -445,31 +447,31 @@
                         <div class="carousel-btn">
                             View options
                         </div>
-                    </div>
+                    </a>
 
-                    <!--card 4-->
-                    <div class="card">
+                    <!--card 4 - Elite Fly Team UAE Emirates-->
+                    <a href="" class="card">
                         <div class="card-img-cont">
                             <p class="card-discount"></p>
-                            <img src="./images/elite-fly-team-uae-emirates-550ml.png" alt="Water bottle" class="card-img">
+                            <img src="../images/elite-fly-team-uae-emirates-550ml.png" alt="Water bottle" class="card-img">
                         </div>
                         <div class="card-info">
                             <h5 class="card-product">Elite Fly Team UAE Emirates 550ml</h5>
                             <div class="card-price-cont">
-                                <p class="card-old-price">AED. 37</p>
-                                <p class="card-price">AED. 37</p>
+                                <p class="card-old-price">AED. 47</p>
+                                <p class="card-price">AED. 35</p>
                             </div>
                         </div>
                         <div class="carousel-btn">
                             View options
                         </div>
-                    </div>
+                    </a>
 
-                    <!-- Card 5 -->
-                    <div class="card">
+                    <!-- Card 5 - Giro gloves-->
+                    <a href="" class="card">
                         <div class="card-img-cont">
                             <p class="card-discount"></p>
-                            <img src="./images/Gloves_cropped_processed_by_imagy.png" alt="Gloves" class="card-img">
+                            <img src="../images/Gloves_cropped_processed_by_imagy.png" alt="Gloves" class="card-img">
                         </div>
                         <div class="card-info">
                             <h5 class="card-product">Giro gloves</h5>
@@ -481,13 +483,13 @@
                         <div class="carousel-btn">
                             View options
                         </div>
-                    </div>
+                    </a>
 
-                    <!-- Card 6 -->
-                    <div class="card">
+                    <!-- Card 6 - Photocromatic Glasses-->
+                    <a href="" class="card">
                         <div class="card-img-cont">
                             <p class="card-discount"></p>
-                            <img src="./images/Glasses.png" alt="Glasses" class="card-img">
+                            <img src="../images/Glasses.png" alt="Glasses" class="card-img">
                         </div>
                         <div class="card-info">
                             <h5 class="card-product">Photocromatic Glasses</h5>
@@ -499,13 +501,13 @@
                         <div class="carousel-btn">
                             View options
                         </div>
-                    </div>
+                    </a>
 
-                    <!-- Card 7 -->
-                    <div class="card">
+                    <!-- Card 7 - Lezyne ABS Pump-->
+                    <a href="" class="card">
                         <div class="card-img-cont">
                             <p class="card-discount"></p>
-                            <img src="./images/Hand_pump.png" alt="Hand pump" class="card-img">
+                            <img src="../images/Hand_pump.png" alt="Hand pump" class="card-img">
                         </div>
                         <div class="card-info">
                             <h5 class="card-product">Lezyne ABS Pump</h5>
@@ -517,13 +519,13 @@
                         <div class="carousel-btn">
                             View options
                         </div>
-                    </div>
+                    </a>
 
-                    <!-- Card 8 -->
-                    <div class="card">
+                    <!-- Card 8 - Silca Super Secret Lube-->
+                    <a href="" class="card">
                         <div class="card-img-cont">
                             <p class="card-discount"></p>
-                            <img src="./images/Bike_lube.png" alt="Bike lube" class="card-img">
+                            <img src="../images/Bike_lube.png" alt="Bike lube" class="card-img">
                         </div>
                         <div class="card-info">
                             <h5 class="card-product">Silca Super Secret Lube</h5>
@@ -535,13 +537,13 @@
                         <div class="carousel-btn">
                             View options
                         </div>
-                    </div>
+                    </a>
 
-                    <!-- Card 9 -->
-                    <div class="card">
+                    <!-- Card 9 - Beamer 700 Lights-->
+                    <a href="" class="card">
                         <div class="card-img-cont">
                             <p class="card-discount"></p>
-                            <img src="./images/Bike_lights.png" alt="Bike lights" class="card-img">
+                            <img src="../images/Bike_lights.png" alt="Bike lights" class="card-img">
                         </div>
                         <div class="card-info">
                             <h5 class="card-product">Beamer 700 Lights</h5>
@@ -553,13 +555,13 @@
                         <div class="carousel-btn">
                             View options
                         </div>
-                    </div>
+                    </a>
 
-                    <!-- Card 10 -->
-                    <div class="card">
+                    <!-- Card 10 - PEdALED yama trail grey men-->
+                    <a href="" class="card">
                         <div class="card-img-cont">
                             <p class="card-discount"></p>
-                            <img src="./images/pedaled-yama-trail-men-grey-2.png" alt="Bike jersey" class="card-img">
+                            <img src="../images/pedaled-yama-trail-men-grey-2.png" alt="Bike jersey" class="card-img">
                         </div>
                         <div class="card-info">
                             <h5 class="card-product">PEdALED yama trail grey men</h5>
@@ -571,8 +573,7 @@
                         <div class="carousel-btn">
                             View options
                         </div>
-                    </div>
-
+                    </a>
                 </div>
 
                 <!-- Right Arrow Button -->
@@ -593,7 +594,7 @@
 
         <div class="mid-section">
             <div class="section-header">
-                <h4>SIMILAR ITEMS</h4>
+                <h4>RELATED ITEMS</h4>
             </div>
             
             <!-- Carousel Wrapper -->
@@ -607,11 +608,29 @@
                 <!-- Carousel Items Container (scrollable area) -->
                 <div class="carousel-items">
 
-                    <!--card 1-->
-                    <div class="card">
+                    <!--card 1 - Orbea laufey H30-->
+                    <a href="../pages/orbea-laufey-h30.html" class="card">
                         <div class="card-img-cont">
                             <p class="card-discount"></p>
-                            <img src="./images/Laufey_silver_main_2.webp" alt="Helmet" class="card-img"> 
+                            <img src="../images/Orbea_Laufey_H30_lavender_cropped.webp" alt="Orbea Laufey h30" class="card-img"> 
+                        </div>
+                        <div class="card-info">
+                            <h5 class="card-product">Orbea Laufey H30</h5>
+                            <div class="card-price-cont">
+                                <p class="card-old-price">AED. 7495</p>
+                                <p class="card-price">AED. 7495</p>
+                            </div>
+                        </div>
+                        <div class="carousel-btn" onclick="openCompare(this); return false;">
+                            Compare
+                        </div>
+                    </a>
+                    
+                    <!--card 2 orbea laufey h-ltd-->
+                    <a href="../pages/orbea-laufey-hltd.html" class="card">
+                        <div class="card-img-cont">
+                            <p class="card-discount"></p>
+                            <img src="../images/Orbea_Laufey_H_LTD_silver_cropped.webp" alt="Orbea Laufey H-LTD" class="card-img"> 
                         </div>
                         <div class="card-info">
                             <h5 class="card-product">Orbea Laufey H-LTD</h5>
@@ -620,83 +639,64 @@
                                 <p class="card-price">AED. 11495</p>
                             </div>
                         </div>
-                        <div class="carousel-btn">
+                        <div class="carousel-btn" onclick="openCompare(this); return false;">
                             Compare
                         </div>
-                        
-                    </div>
-
-                    <!--card 2-->
-                    <div class="card">
-                        <div class="card-img-cont">
-                            <p class="card-discount"></p>
-                            <img src="./images/Laufey_silver_main_1.webp" alt="Orbea bicycle image" class="card-img">
-                        </div>
-                        <div class="card-info">
-                            <h5 class="card-product">Orbea laufey H30</h5>
-                            <div class="card-price-cont">
-                                <p class="card-old-price">AED. 7495</p>
-                                <p class="card-price">AED. 7495</p>
-                            </div>
-                        </div>
-                        <div class="carousel-btn">
-                            compare
-                        </div>
-                    </div>
+                    </a>
                     
-                    <!--card 3-->
-                    <div class="card">
+                    <!--card 3 - Orbea Occam SL h30-->
+                    <a href="../pages/orbea-occam-sl-h30.html" class="card">
                         <div class="card-img-cont">
                             <p class="card-discount"></p>
-                            <img src="./images/Orbea Alma M50.webp" alt="Orbea bicycle image" class="card-img">
+                            <img src="../images/Orbea_Occam_SL_H30_cropped.webp" alt="Orbea bicycle image" class="card-img">
                         </div>
                         <div class="card-info">
-                            <h5 class="card-product">Orbea Alma M50</h5>
+                            <h5 class="card-product">Orbea Occam SL H30</h5>
                             <div class="card-price-cont">
-                                <p class="card-old-price">AED. 9495</p>
-                                <p class="card-price">AED. 9495</p>
+                                <p class="card-old-price">AED. 13500</p>
+                                <p class="card-price">AED. 12995</p>
                             </div>
                         </div>
-                        <div class="carousel-btn">
+                        <div class="carousel-btn" onclick="openCompare(this); return false;">
                             Compare
                         </div>
-                    </div>
+                    </a>
 
-                    <!--card 4-->
-                    <div class="card">
+                    <!-- Card 4 - Orbea Occam LT H30-->
+                    <a href="../pages/orbea-occam-lt-h30.html" class="card">
                         <div class="card-img-cont">
                             <p class="card-discount"></p>
-                            <img src="./images/Orbea Alma M20.webp" alt="Orbea bicycle image" class="card-img">
+                            <img src="../images/Orbea_OCCAM_LT_H30_black_cropped.webp" alt="Orbea Alma M30" class="card-img">
                         </div>
                         <div class="card-info">
-                            <h5 class="card-product">Orbea Alma M20</h5>
-                            <div class="card-price-cont">
-                                <p class="card-old-price">AED. 14500</p>
-                                <p class="card-price">AED. 13995</p>
-                            </div>
-                        </div>
-                        <div class="carousel-btn">
-                            Compare
-                        </div>
-                    </div>
-
-                    <!-- Card 5 -->
-                    <div class="card">
-                        <div class="card-img-cont">
-                            <p class="card-discount"></p>
-                            <img src="./images/Orbea Alma M30.webp" alt="Orbea bicycle image" class="card-img">
-                        </div>
-                        <div class="card-info">
-                            <h5 class="card-product">Orbea Alma M30</h5>
+                            <h5 class="card-product">Orbea Occam LT H30</h5>
                             <div class="card-price-cont">
                                 <p class="card-old-price">AED. 13000</p>
                                 <p class="card-price">AED. 11495</p>
                             </div>
                         </div>
-                        <div class="carousel-btn">
+                        <div class="carousel-btn" onclick="openCompare(this); return false;">
                             Compare
                         </div>
-                    </div>
+                    </a>
+
+                    <!--card 5 - Orbea Occam SL H10-->
+                    <a href="../pages/orbea-occam-sl-h10.html" class="card">
+                        <div class="card-img-cont">
+                            <p class="card-discount"></p>
+                            <img src="../images/Orbea_Occam_SL_H10_green_cropped.webp" alt="Orbea bicycle image" class="card-img">
+                        </div>
+                        <div class="card-info">
+                            <h5 class="card-product">Orbea Occam SL H10</h5>
+                            <div class="card-price-cont">
+                                <p class="card-old-price">AED. 13995</p>
+                                <p class="card-price">AED. 13995</p>
+                            </div>
+                        </div>
+                        <div class="carousel-btn" onclick="openCompare(this); return false;">
+                            Compare
+                        </div>
+                    </a>
              </div>
 
                 <!-- Right Arrow Button -->
@@ -710,7 +710,6 @@
             <!--<div class="carousel-scrollbar">
                 <div class="carousel-scrollbar-fill"></div>
             </div>-->
-            <button class="btn-mid-section" >All Accessories</button>
         </div>
 
         <!-- Footer -->

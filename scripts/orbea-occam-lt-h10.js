@@ -1,48 +1,5 @@
 
 
-// swap bikes by colour
-
-document.addEventListener('DOMContentLoaded', () => {
-  const mainImg = document.querySelector('.main-product-img');
-  const colorDots = document.querySelectorAll('.color');
-
-  const blackSrc = ' ../images/Orbea_OCCAM_LT_H10_spaceship_green_cropped.webp';
-  const greenSrc = '../images/Orbea_OCCAM_LT_H10_spaceship_green_cropped.webp';
-
-  colorDots.forEach(dot => {
-    dot.addEventListener('click', () => {
-      // remove active from all dots
-      colorDots.forEach(c => c.classList.remove('active'));
-      dot.classList.add('active');
-
-      // fade out
-      mainImg.style.opacity = 0;
-
-      // after fade-out completes, swap src and fade back in
-      setTimeout(() => {
-        if (dot.classList.contains('lavender')) {
-          mainImg.src = lavenderSrc;
-        } else if (dot.classList.contains('jet-black')) {
-          mainImg.src = blackSrc;
-        } else if (dot.classList.contains('copper')) {
-          mainImg.src = greenSrc;
-        }
-
-        // wait for the new image to load before fading in
-        mainImg.onload = () => {
-          mainImg.style.opacity = 1;
-        };
-      }, 300); // matches your CSS transition duration
-    });
-  });
-});
-
-
-
-
-
-
-
 // update availablity on size selection
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -67,8 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
       preOrderDropdown.classList.remove('open');
 
       if (size === 'S') {
-        availabilityBlock.classList.add('blue');
-        info.textContent = 'Available';
+        availabilityBlock.classList.add('orange');
+        info.textContent = 'Available on pre-order. Will be available for pickup or delivery in 2 weeks. (Pre-orders get 10% off)';
         preOrderDropdown.classList.add('open'); 
       } else if (size === 'M') {
         availabilityBlock.classList.add('blue');

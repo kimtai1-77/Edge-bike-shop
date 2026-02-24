@@ -1,45 +1,5 @@
 
 
-
-// swap bikes by colour
-
-document.addEventListener('DOMContentLoaded', () => {
-  const mainImg = document.querySelector('.main-product-img');
-  const colorDots = document.querySelectorAll('.color');
-
-  const milkySrc = '../images/Orbea_Occam_SL_M30_milky_cropped.webp';
-  const royalSrc = '../images/Orbea_Occam_SL_M30_royal_cropped.webp';
-
-  colorDots.forEach(dot => {
-    dot.addEventListener('click', () => {
-      // remove active from all dots
-      colorDots.forEach(c => c.classList.remove('active'));
-      dot.classList.add('active');
-
-      // fade out
-      mainImg.style.opacity = 0;
-
-      // after fade-out completes, swap src and fade back in
-      setTimeout(() => {
-        if (dot.classList.contains('milky')) {
-          mainImg.src = milkySrc;
-        } else if (dot.classList.contains('royal-amethyst')) {
-          mainImg.src = royalSrc;
-        }
-
-        // wait for the new image to load before fading in
-        mainImg.onload = () => {
-          mainImg.style.opacity = 1;
-        };
-      }, 300); // matches your CSS transition duration
-    });
-  });
-});
-
-
-
-
-
 // update availablity on size selection
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -65,8 +25,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (size === 'S') {
         availabilityBlock.classList.add('orange');
-        info.textContent = 'Available on pre-order. Will be available for pick-up or delivery in 2 weeks';
-        preOrderDropdown.classList.add(open)
+        info.textContent = 'Available on pre-order. Will be available for pick-up or delivery in 2 weeks. (Pre-orders get 10% off)';
+        preOrderDropdown.classList.add('open');
       } else if (size === 'M') {
         availabilityBlock.classList.add('blue');
         info.textContent = 'Available';
@@ -88,5 +48,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   notifyCancel.addEventListener('click', () => {
     notifyDropdown.classList.remove('open'); // smooth slide up
+  });
+
+  preOrderDropdown.querySelector('.pre-order-yes').addEventListener('click', () => {
+    alert('This feature is not available in the demo version');
+    preOrderDropdown.classList.remove('open');
+  });
+
+  preOrderDropdown.querySelector('.pre-order-cancel').addEventListener('click', () => {
+    preOrderDropdown.classList.remove('open');
   });
 });

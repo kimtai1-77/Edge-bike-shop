@@ -16,6 +16,8 @@
  * @param {HTMLElement} targetPageData.imgElement - Image element to clone
  * @param {HTMLElement} targetPageData.contentElement - Content wrapper to clone
  */
+
+
 function createCompareLightbox(hostPageData, targetPageData) {
   // Create overlay
   const overlay = document.createElement('div');
@@ -25,63 +27,97 @@ function createCompareLightbox(hostPageData, targetPageData) {
   const lightbox = document.createElement('div');
   lightbox.className = 'compare-lightbox';
 
-  // Create close button
+  // Close button
   const closeBtn = document.createElement('button');
   closeBtn.className = 'compare-close-btn';
   closeBtn.setAttribute('aria-label', 'Close comparison');
   closeBtn.innerHTML = '&times;';
-  closeBtn.addEventListener('click', () => {
-    overlay.remove();
-  });
+  closeBtn.addEventListener('click', () => overlay.remove());
 
-  // Create title section
-  const titleSection = document.createElement('div');
-  titleSection.className = 'compare-title';
-  titleSection.innerHTML = `<span>${hostPageData.title}</span> vs <span>${targetPageData.title}</span>`;
-
-  // Create main comparison container (flex row or column depending on screen size)
+  // Main comparison container
   const compareContainer = document.createElement('div');
   compareContainer.className = 'compare-container';
 
-  // --- LEFT SIDE / HOST PAGE ---
+  // --- LEFT SIDE ---
   const leftSide = document.createElement('div');
   leftSide.className = 'compare-side compare-side-left';
 
-  // .compare-img section (left)
+  const leftHeader = document.createElement('div');
+  leftHeader.className = 'compare-header';
+
+  const leftTitle = document.createElement('div');
+  leftTitle.className = 'compare-title';
+  leftTitle.textContent = hostPageData.title;
+
+  const leftPrice = document.createElement('div');
+  leftPrice.className = 'compare-price-cont';
+  if (hostPageData.priceElement) {
+    const clonedPrice = hostPageData.priceElement.cloneNode(true);
+    leftPrice.appendChild(clonedPrice);
+    hideCompareExtras(leftPrice);
+  }
+
+  leftHeader.appendChild(leftTitle);
+  leftHeader.appendChild(leftPrice);
+  leftSide.appendChild(leftHeader);
+
+  const leftContentCont = document.createElement('div');
+  leftContentCont.className = 'compare-content-cont';
+
   const leftImgSection = document.createElement('div');
   leftImgSection.className = 'compare-img';
-  const leftImg = hostPageData.imgElement.cloneNode(true);
-  leftImgSection.appendChild(leftImg);
-  leftSide.appendChild(leftImgSection);
+  leftImgSection.appendChild(hostPageData.imgElement.cloneNode(true));
 
-  // .compare-content section (left)
   const leftContentSection = document.createElement('div');
   leftContentSection.className = 'compare-content';
-  const leftContent = hostPageData.contentElement.cloneNode(true);
-  leftContentSection.appendChild(leftContent);
-  leftSide.appendChild(leftContentSection);
+  leftContentSection.appendChild(hostPageData.contentElement.cloneNode(true));
 
+  leftContentCont.appendChild(leftImgSection);
+  leftContentCont.appendChild(leftContentSection);
+
+  leftSide.appendChild(leftContentCont);
   compareContainer.appendChild(leftSide);
 
-  // --- RIGHT SIDE / TARGET PAGE ---
+  // --- RIGHT SIDE ---
   const rightSide = document.createElement('div');
   rightSide.className = 'compare-side compare-side-right';
 
-  // .compare-img section (right)
+  const rightHeader = document.createElement('div');
+  rightHeader.className = 'compare-header';
+
+  const rightTitle = document.createElement('div');
+  rightTitle.className = 'compare-title';
+  rightTitle.textContent = targetPageData.title;
+
+  const rightPrice = document.createElement('div');
+  rightPrice.className = 'compare-price-cont';
+  if (targetPageData.priceElement) {
+    const clonedPrice = targetPageData.priceElement.cloneNode(true);
+    rightPrice.appendChild(clonedPrice);
+    hideCompareExtras(rightPrice);
+  }
+
+  rightHeader.appendChild(rightTitle);
+  rightHeader.appendChild(rightPrice);
+  rightSide.appendChild(rightHeader);
+
+  const rightContentCont = document.createElement('div');
+  rightContentCont.className = 'compare-content-cont';
+
   const rightImgSection = document.createElement('div');
   rightImgSection.className = 'compare-img';
-  const rightImg = targetPageData.imgElement.cloneNode(true);
-  rightImgSection.appendChild(rightImg);
-  rightSide.appendChild(rightImgSection);
+  rightImgSection.appendChild(targetPageData.imgElement.cloneNode(true));
 
-  // .compare-content section (right)
   const rightContentSection = document.createElement('div');
   rightContentSection.className = 'compare-content';
-  const rightContent = targetPageData.contentElement.cloneNode(true);
-  rightContentSection.appendChild(rightContent);
-  rightSide.appendChild(rightContentSection);
+  rightContentSection.appendChild(targetPageData.contentElement.cloneNode(true));
 
-  // Add divider
+  rightContentCont.appendChild(rightImgSection);
+  rightContentCont.appendChild(rightContentSection);
+
+  rightSide.appendChild(rightContentCont);
+
+  // Divider + assembly
   const divider = document.createElement('div');
   divider.className = 'compare-divider';
   compareContainer.appendChild(divider);
@@ -89,22 +125,18 @@ function createCompareLightbox(hostPageData, targetPageData) {
 
   // Assemble lightbox
   lightbox.appendChild(closeBtn);
-  lightbox.appendChild(titleSection);
   lightbox.appendChild(compareContainer);
-
-  // Assemble overlay
   overlay.appendChild(lightbox);
-
-  // Add to page and show
   document.body.appendChild(overlay);
 
-  // Optional: close on overlay click (outside lightbox)
+  // Final cleanup: ensure any discount tabs inside lightbox are hidden
+  hideCompareExtras(lightbox);
+
   overlay.addEventListener('click', (e) => {
-    if (e.target === overlay) {
-      overlay.remove();
-    }
+    if (e.target === overlay) overlay.remove();
   });
 }
+
 
 // --- Dynamic helper: fetch page and extract required elements ---
 async function fetchPageDataFromUrl(url) {
@@ -117,6 +149,7 @@ async function fetchPageDataFromUrl(url) {
 
     const titleEl = doc.querySelector('.name-box');
     const imgEl = doc.querySelector('.main-product-img-cont');
+    const priceEl = doc.querySelector('.price-cont');
     // Try the more specific combined classes first, then fall back
     let contentEl = doc.querySelector('.wrapper.mid-section.dark-section');
     if (!contentEl) contentEl = doc.querySelector('.wrapper.mid-section');
@@ -125,6 +158,7 @@ async function fetchPageDataFromUrl(url) {
     return {
       title: titleEl ? titleEl.textContent.trim() : doc.title || '',
       imgElement: imgEl || document.createElement('div'),
+      priceElement: priceEl || document.createElement('div'),
       contentElement: contentEl || document.createElement('div')
     };
   } catch (err) {
@@ -137,6 +171,7 @@ async function fetchPageDataFromUrl(url) {
 function gatherHostPageData() {
   const titleEl = document.querySelector('.name-box');
   const imgEl = document.querySelector('.main-product-img-cont');
+  const priceEl = document.querySelector('.price-cont');
   let contentEl = document.querySelector('.wrapper.mid-section.dark-section');
   if (!contentEl) contentEl = document.querySelector('.wrapper.mid-section');
   if (!contentEl) contentEl = document.querySelector('.wrapper');
@@ -144,6 +179,7 @@ function gatherHostPageData() {
   return {
     title: titleEl ? titleEl.textContent.trim() : document.title || '',
     imgElement: imgEl || document.createElement('div'),
+    priceElement: priceEl || document.createElement('div'),
     contentElement: contentEl || document.createElement('div')
   };
 }
@@ -231,3 +267,14 @@ window.openCompare = async function openCompare(elOrEvent) {
     alert('Unable to open comparison. See console for details.');
   }
 };
+
+
+
+
+function hideCompareExtras(container) {
+  const oldPrice = container.querySelector('.old-price');
+  if (oldPrice) oldPrice.style.display = 'none';
+
+  const discountTab = container.querySelector('.discount-tab');
+  if (discountTab) discountTab.style.display = 'none';
+}

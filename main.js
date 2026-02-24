@@ -1,5 +1,129 @@
 
 
+// Run once on page load
+document.addEventListener("DOMContentLoaded", () => {
+  updateCarouselDiscounts();
+  updateDiscountMain();
+  selectBikeByColour();
+  
+
+  // Set up MutationObserver to watch for price changes
+  const observer = new MutationObserver(() => {
+    updateCarouselDiscounts();
+    updateDiscountMain();
+  });
+
+  // Target: watch all carousels for changes in child nodes/text
+  document.querySelectorAll(".carousel").forEach(carousel => {
+    observer.observe(carousel, {
+      subtree: true,       // watch all descendants
+      childList: true,     // watch for added/removed nodes
+      characterData: true, // watch for text changes
+    });
+  });
+});
+
+
+
+
+function selectBikeByColour() {
+  const mainImg = document.querySelector('.main-product-img');
+  const colorDots = document. querySelectorAll('.color');
+  const imagesSource = document.querySelectorAll('.bike-images-cont img');
+  const colorName = document.querySelector('.color-name');
+
+  // look for ID in the source
+  const copperSrc = Array.from(imagesSource).find(img => img.id === 'copper')?.src;
+  const silverSrc = Array.from(imagesSource).find(img => img.id === 'silver')?.src;
+  const spaceshipGreenSrc = Array.from(imagesSource).find(img => img.id === 'spaceship-green')?.src;
+  const lavenderSrc = Array.from(imagesSource).find(img => img.id === 'lavender')?.src;
+  const jetBlackSrc = Array.from(imagesSource).find(img => img.id === 'jet-black')?.src;
+  const royalAmethystSrc = Array.from(imagesSource).find(img => img.id === 'royal-amethyst')?.src;
+  const ivorySrc = Array.from(imagesSource).find(img => img.id === 'ivory-white')?.src;
+  const escapeGreenSrc = Array.from(imagesSource).find(img => img.id === 'escape-green')?.src;
+
+  colorDots.forEach(color => {
+    color.addEventListener('click', () => {
+      // first remove active from all dots
+      colorDots.forEach(dot => dot.classList.remove('active'));
+      color.classList.add('active');
+
+      // fade out
+      mainImg.style.opacity = 0;
+
+      // after fade-out completes, swap src and fade back in
+      setTimeout(() => {
+        if (color.classList.contains('copper')) {
+          mainImg.src = copperSrc;
+          colorName.textContent = 'Metallic Cinammon (Matt)';
+        } else if (color.classList.contains('silver')) {
+          mainImg.src = silverSrc;
+          colorName.textContent = 'Smooth Silver (Matt)'
+        } else if (color.classList.contains('spaceship-green')) {
+          mainImg.src = spaceshipGreenSrc;
+          colorName.textContent = 'Spaceship Green (Gloss)';
+        } else if (color.classList.contains('lavender')) {
+          mainImg.src = lavenderSrc;
+          colorName.textContent = 'Digital Lavender';
+        } else if (color.classList.contains('jet-black')) {
+          mainImg.src = jetBlackSrc;
+          colorName.textContent = 'Tanzanite (Matt-Gloss)';
+        } else if (color.classList.contains('royal-amethyst')) {
+          mainImg.src = royalAmethystSrc;
+          colorName.textContent = 'Sunset Carbon View (Matt)';
+        } else if (color.classList.contains('ivory-white')) {
+          mainImg.src = ivorySrc;
+          colorName.textContent = 'Ivory White';
+        } else if (color.classList.contains('escape-green')) {
+          mainImg.src = escapeGreenSrc;
+          colorName.textContent = 'Escape Green';
+        }
+
+        // wait for the new image to load before fading in
+        mainImg.onload = () => {
+          mainImg.style.opacity = 1;
+        };
+      }, 300); // matches your CSS transition duration
+    });
+  });
+
+  // handle thumbnail clicks
+  imagesSource.forEach(scrollImg => {
+    scrollImg.style.cursor = 'pointer';
+
+    scrollImg.addEventListener('click', () => {
+      // fade out
+      mainImg.style.opacity = 0;
+      colorName.textContent = ("");
+
+      setTimeout(() => {
+        const tempSrc = mainImg.src;
+        const tempAlt = mainImg.alt;
+        mainImg.src = scrollImg.src;
+        mainImg.alt = scrollImg.alt;
+        scrollImg.src = tempSrc;
+        scrollImg.alt = tempAlt;
+
+        // update active dot if this thumbnail has a matching ID
+        colorDots.forEach(dot => {
+          dot.classList.remove('active');
+          if (scrollImg.id && dot. classList.contains(scrollImg.id)) {
+            dot.classList.add('active');
+          }
+        });
+
+        mainImg.onload = () => {
+          mainImg.style.opacity = 1;
+        };
+      }, 300);
+    });
+  });
+}
+
+
+
+
+
 // Toggle mobile menu and overlay 
 
 function toggleMobileMenu() {
@@ -78,9 +202,9 @@ sizeBoxes.forEach(currentItem => {
 
 
 
-// percentage discount calculator
+// percentage discount calculator - carousel only
 
-function updateAllDiscounts() {
+function updateCarouselDiscounts() {
   const carousels = document.querySelectorAll(".carousel");
 
   carousels.forEach(carousel => {
@@ -95,8 +219,8 @@ function updateAllDiscounts() {
       if (!oldPriceEl || !newPriceEl || !discountEl) return;
 
       // Extract numeric values only
-      const oldPrice = parseFloat(oldPriceEl.textContent.replace(/\D/g, ""));
-      const newPrice = parseFloat(newPriceEl.textContent.replace(/\D/g, ""));
+      const oldPrice = parseFloat(oldPriceEl.textContent.replace(/[^0-9.]/g, ""));
+      const newPrice = parseFloat(newPriceEl.textContent.replace(/[^0-9.]/g, ""));
 
       if (oldPrice > newPrice) {
         const discount = Math.round(((oldPrice - newPrice) / oldPrice) * 100);
@@ -111,24 +235,7 @@ function updateAllDiscounts() {
   });
 }
 
-// Run once on page load
-document.addEventListener("DOMContentLoaded", () => {
-  updateAllDiscounts();
 
-  // Set up MutationObserver to watch for price changes
-  const observer = new MutationObserver(() => {
-    updateAllDiscounts();
-  });
-
-  // Target: watch all carousels for changes in child nodes/text
-  document.querySelectorAll(".carousel").forEach(carousel => {
-    observer.observe(carousel, {
-      subtree: true,       // watch all descendants
-      childList: true,     // watch for added/removed nodes
-      characterData: true, // watch for text changes
-    });
-  });
-});
 
 
 
@@ -163,8 +270,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const sizingGuide = document.querySelector('.sizing-guide');
   const sizingMenu = document.querySelector('.sizing-menu');
   const arrows = sizingGuide.querySelectorAll('svg');
-  const arrowDown = arrows[0]; // 
-  const arrowUp = arrows[1];   // 
+  const arrowDown = arrows[0]; // first SVG
+  const arrowUp = arrows[1];   // second SVG
 
   sizingGuide.addEventListener('click', () => {
     const isOpen = sizingMenu.classList.toggle('open');
@@ -181,24 +288,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-// open sizing-menu
-const sizingGuide = document.querySelector('.sizing-guide');
-const sizingMenu = document.querySelector('.sizing-menu');
-const arrows = sizingGuide.querySelectorAll('svg');
-const arrowDown = arrows[0]; // first SVG
-const arrowUp = arrows[1];   // second SVG
 
-sizingGuide.addEventListener('click', () => {
-    const isOpen = sizingMenu.classList.toggle('.open');
+function updateDiscountMain() {
+    const bikeDetails = document.querySelector(".product-page");
 
-    if (isOpen) {
-        arrowDown.style.display = 'none';
-        arrowUp.style.display = 'inline';
-    } else {
-        arrowDown.style.display = 'inline';
-        arrowUp.style.display = 'none';
-    }
-});
+      const oldPriceEl = bikeDetails.querySelector(".old-price");
+      const newPriceEl = bikeDetails.querySelector(".new-price");
+      const discountEl = bikeDetails.querySelector(".discount-tab");
+
+      // Skip product pages without full price/discount structure
+      if (!oldPriceEl || !newPriceEl || !discountEl) return;
+
+      // Extract numeric values only
+      const oldPrice = parseFloat(oldPriceEl.textContent.replace(/[^0-9.]/g, ""));
+      const newPrice = parseFloat(newPriceEl.textContent.replace(/[^0-9.]/g, ""));
+
+      if (oldPrice > newPrice) {
+        const discount = Math.round(((oldPrice - newPrice)/oldPrice) * 100);
+        discountEl.textContent = `${discount}% Off`;
+        discountEl.style.display = "block";
+        oldPriceEl.style.display = "inline";
+      } else {
+        discountEl.style.display = "none";
+        oldPriceEl.style.display = "none";
+      }
+    };
 
 
 

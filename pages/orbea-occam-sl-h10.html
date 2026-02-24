@@ -6,9 +6,10 @@
         <title>Document</title>
         <link rel="stylesheet" href="../styles.css">
         <script src="../main.js" defer></script>
-        <script src="../scripts/orbea-occam-lt-h10.js" defer></script>
+        <script src="../scripts/orbea-occam-sl-h10.js" defer></script>
         <script src="../scripts/carousel.js" defer></script>
         <script src="../scripts/compare.js" defer></script>
+        <script src="../scripts/magnify.js"></script>
 
         <!--Sora-->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,7 +19,7 @@
     <body>
         <div class="top-bar">
             <div class="offer-bar">
-                <h3>Click here for 30% off - 3 days left!</h3>
+                <h5>Click here for 30% off - 3 days left!</h5>
             </div>
             <div class="search-bar">
                 <img src="../images/EDGE logo - dark brown.png" alt="edge-logo" width="96px" height="auto">
@@ -81,26 +82,32 @@
             <div class="product-main-cont">
                 <div class="main-product-img-cont">
                     <div>
-                        <img class="main-product-img" src="../images/Orbea_Occam_SL_H10_green_cropped.webp" alt="">
+                        <img class="main-product-img" src="../images/Orbea_Occam_SL_H10_green_cropped.webp" alt="Orbea bicycle">
                     </div>
+                    <p class="discount-tab"></p>
                 </div>
-                <!--<div class="bike-images-cont">
-                    <img class="scroll-img" src="./images/Laufey_silver_main_2_cropped.png" alt="">
-                </div>-->
+                <div class="bike-images-cont">
+                    <img class="scroll-img" id="spaceship-green" src="../images/Orbea_Occam_SL_H10_green_cropped.webp" alt="">
+                    <img class="scroll-img" id="copper" src="../images/Orbea_Occam_SL_H10_copper_cropped.webp" alt="">
+                </div>
             </div>
             <div class="bike-sale-details-cont">
                 <div class="name-box">
                     <h4>Orbea Occam SL H10</h4>
                 </div>
                 <div class="price-cont">
-                    <h2>AED. 13995.00</h2>
+                    <h5 class="old-price">AED. 13995</h5>
+                    <h3 class="new-price">AED. 13995</h3>
                 </div>
-                <div class="color-box-cont">
-                    <p>Color:</p>
-                    <div class="color-box">
-                        <div class="color spaceship-green"></div>
-                        <div class="color copper"></div>
+                <div class="color-wrapper">
+                    <div class="color-box-cont">
+                        <p>Color:</p>
+                        <div class="color-box">
+                            <div class="color copper"></div>
+                            <div class="color spaceship-green"></div>
+                        </div>
                     </div>
+                    <p class="color-name"></p>
                 </div>
                 <div class="availability-box">
                     <div class="availability">
@@ -114,6 +121,13 @@
                         <div class="notify-buttons">
                             <button class="notify-yes">Yes</button>
                             <button class="notify-cancel">Cancel</button>
+                        </div>
+                    </div>
+                    <div class="pre-order-dropdown">
+                        <p>Would you like to pre-order?</p>
+                        <div class="notify-buttons">
+                            <button class="pre-order-yes">Yes</button>
+                            <button class="pre-order-cancel">Cancel</button>
                         </div>
                     </div>
                 </div>
@@ -230,7 +244,7 @@
                         <p>Frame</p>
                     </div>
                     <div class="description">
-                        <p>Orbea Occam Hydro. Concentric Boost 12x148 rear axle. Pure Trail geometry. Both Internal & External cable routing. Asymmetric design. 29" wheels. Linkage compatible with OC multitool</p>
+                        <p>Orbea Occam OMR. Concentric Boost 12x148 rear axle. Pure Trail geometry. Both Internal & External cable routing. Asymmetric design. 29" wheels.</p>
                     </div>
                 </div>
                 <div class="part-description">
@@ -254,7 +268,7 @@
                         <p>Headset</p>
                     </div>
                     <div class="description">
-                        <p>FSA 1-1/2" Integrated Aluminium Cup</p>
+                        <p>Alloy 1-1/2", Black Oxidated Bearing</p>
                     </div>
                 </div>
                 <div class="part-description">
@@ -310,7 +324,7 @@
                         <p>Stem</p>
                     </div>
                     <div class="description">
-                        <p>OC Mountain Control MC20, 0º</p>
+                        <p>OC Mountain Control MC11 Alu SL, 0º</p>
                     </div>
                 </div>
                 <div class="part-description">
@@ -334,7 +348,7 @@
                         <p>Tyres</p>
                     </div>
                     <div class="description">
-                        <p>Maxxis Dissector 2.40" 60 TPI 3C MaxxTerra Exo TLR</p>
+                        <p>Schwalbe Wicked Will Evo TLE, 29x2.40 Super Race, Soft Compound, Addix, Brown</p>
                     </div>
                 </div>
                 <div class="part-description">
@@ -342,7 +356,7 @@
                         <p>Tyres</p>
                     </div>
                     <div class="description">
-                        <p>Maxxis Rekon 2.40" FB 60 TPI Dual Exo TR</p>
+                        <p>Schwalbe Wicked Will Evo TLE, 29x2.40 Super Race, Speed Grip, Addix, Brown</p>
                     </div>
                 </div>
                 <div class="part-description">
@@ -420,8 +434,8 @@
                         <div class="card-info">
                             <h5 class="card-product">Helmet</h5>
                             <div class="card-price-cont">
-                                <p class="card-old-price">AED. 500</p>
-                                <p class="card-price">AED. 400</p>
+                                <p class="card-old-price">AED. 600</p>
+                                <p class="card-price">AED. 425</p>
                             </div>
                         </div>
                         <div class="carousel-btn">
@@ -634,7 +648,7 @@
                         <div class="card-info">
                             <h5 class="card-product">Orbea Occam SL H30</h5>
                             <div class="card-price-cont">
-                                <p class="card-old-price">AED. 12995</p>
+                                <p class="card-old-price">AED. 13500</p>
                                 <p class="card-price">AED. 12995</p>
                             </div>
                         </div>
@@ -661,17 +675,17 @@
                         </div>
                     </a>
 
-                    <!--card 3 - Orbea Occam SL M30-->
-                    <a href="../pages/orbea-occam-sl-m30.html" class="card">
+                    <!--card 3 - Orbea Occam LT H10-->
+                    <a href="../pages/orbea-occam-lt-h10.html" class="card">
                         <div class="card-img-cont">
                             <p class="card-discount"></p>
-                            <img src="../images/Orbea_Occam_SL_M30_milky_cropped.webp" alt="Orbea Laufey h30" class="card-img"> 
+                            <img src="../images/Orbea_OCCAM_LT_H10_spaceship_green_cropped.webp" alt="Orbea Laufey h30" class="card-img"> 
                         </div>
                         <div class="card-info">
-                            <h5 class="card-product">Orbea Occam SL M30</h5>
+                            <h5 class="card-product">Orbea Occam LT H10</h5>
                             <div class="card-price-cont">
-                                <p class="card-old-price">AED. 19495</p>
-                                <p class="card-price">AED. 19495</p>
+                                <p class="card-old-price">AED. 16995</p>
+                                <p class="card-price">AED. 16995</p>
                             </div>
                         </div>
                         <div class="carousel-btn" onclick="openCompare(this); return false;">
@@ -679,17 +693,17 @@
                         </div>
                     </a>
 
-                    <!-- Card 4 - Orbea Occam LT H10-->
+                    <!-- Card 4 - Orbea Occam SL M30-->
                     <a href="../pages/orbea-occam-sl-h10.html" class="card">
                         <div class="card-img-cont">
                             <p class="card-discount"></p>
-                            <img src="../images/Orbea_Occam_SL_H10_green_cropped.webp" alt="Orbea bicycle image" class="card-img">
+                            <img src="../images/Orbea_Occam_SL_M30_ivory-white_cropped.webp" alt="Orbea bicycle image" class="card-img">
                         </div>
                         <div class="card-info">
-                            <h5 class="card-product">Orbea Occam LT H10</h5>
+                            <h5 class="card-product">Orbea Occam SL M30</h5>
                             <div class="card-price-cont">
-                                <p class="card-old-price">AED. 16995</p>
-                                <p class="card-price">AED. 16995</p>
+                                <p class="card-old-price">AED. 19495</p>
+                                <p class="card-price">AED. 19495</p>
                             </div>
                         </div>
                         <div class="carousel-btn" onclick="openCompare(this); return false;">

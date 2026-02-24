@@ -1,47 +1,5 @@
 
 
-// swap bikes by colour
-
-document.addEventListener('DOMContentLoaded', () => {
-  const mainImg = document.querySelector('.main-product-img');
-  const colorDots = document.querySelectorAll('.color');
-
-  const lavenderSrc = '../images/Orbea_Laufey_H30_lavender_cropped.webp';
-  const silverlSrc = '../images/Orbea_Laufey_H30_silver_cropped.webp';
-  const copperSrc = '../images/Orbea_Laufey_H30_copper_cropped.webp'
-
-
-  colorDots.forEach(dot => {
-    dot.addEventListener('click', () => {
-      // remove active from all dots
-      colorDots.forEach(c => c.classList.remove('active'));
-      dot.classList.add('active');
-
-      // fade out
-      mainImg.style.opacity = 0;
-
-      // after fade-out completes, swap src and fade back in
-      setTimeout(() => {
-        if (dot.classList.contains('lavender')) {
-          mainImg.src = lavenderSrc;
-        } else if (dot.classList.contains('royal-black')) {
-          mainImg.src = silverlSrc;
-        } else if (dot.classList.contains('copper')) {
-          mainImg.src = copperSrc;
-        }
-
-        // wait for the new image to load before fading in
-        mainImg.onload = () => {
-          mainImg.style.opacity = 1;
-        };
-      }, 300); // matches your CSS transition duration
-    });
-  });
-});
-
-
-
-
 // update availablity on size selection
 
 document.addEventListener('DOMContentLoaded', () => {

@@ -9,6 +9,7 @@
         <script src="../scripts/orbea-occam-sl-m30.js" defer></script>
         <script src="../scripts/carousel.js" defer></script>
         <script src="../scripts/compare.js" defer></script>
+        <script src="../scripts/magnify.js"></script>
 
         <!--Sora-->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,7 +19,7 @@
     <body>
         <div class="top-bar">
             <div class="offer-bar">
-                <h3>Click here for 30% off - 3 days left!</h3>
+                <h5>Click here for 30% off - 3 days left!</h5>
             </div>
             <div class="search-bar">
                 <img src="../images/EDGE logo - dark brown.png" alt="edge-logo" width="96px" height="auto">
@@ -81,26 +82,34 @@
             <div class="product-main-cont">
                 <div class="main-product-img-cont">
                     <div>
-                        <img class="main-product-img" src="../images/Orbea_Occam_SL_M30_milky_cropped.webp" alt="Orbea bicycle">
+                        <img class="main-product-img" src="../images/Orbea_Occam_SL_M30_ivory-white_cropped.webp" alt="Orbea bicycle">
                     </div>
+                    <p class="discount-tab"></p>
                 </div>
-                <!--<div class="bike-images-cont">
-                    <img class="scroll-img" src="./images/Laufey_silver_main_2_cropped.png" alt="">
-                </div>-->
+                <div class="bike-images-cont">
+                    <img class="scroll-img" id="ivory-white" src="../images/Orbea_Occam_SL_M30_ivory-white_cropped.webp" alt="">
+                    <img class="scroll-img" id="royal-amethyst" src="../images/Orbea_Occam_SL_M30_royal_cropped.webp" alt="">
+                    <img class="scroll-img" id="escape-green" src="../images/Orbea_Occam_SL_M30_escape_green_cropped.webp" alt="">
+                </div>
             </div>
             <div class="bike-sale-details-cont">
                 <div class="name-box">
-                    <h4>Orbea Occam SL M30</h4>
+                    <h5>Orbea Occam SL M30</h5>
                 </div>
                 <div class="price-cont">
-                    <h2>AED. 19495.00</h2>
+                    <h6 class="old-price">AED. 19495</h6>
+                    <h3 class="new-price">AED. 19495</h3>
                 </div>
-                <div class="color-box-cont">
-                    <p>Color:</p>
-                    <div class="color-box">
-                        <div class="color milky"></div>
-                        <div class="color royal-amethyst"></div>
+                <div class="color-wrapper">
+                    <div class="color-box-cont">
+                        <p>Color:</p>
+                        <div class="color-box">
+                            <div class="color ivory-white"></div>
+                            <div class="color royal-amethyst"></div>
+                            <div class="color escape-green"></div>
+                        </div>
                     </div>
+                    <p class="color-name"></p>
                 </div>
                 <div class="availability-box">
                     <div class="availability">
@@ -641,7 +650,7 @@
                         <div class="card-info">
                             <h5 class="card-product">Orbea Occam SL H30</h5>
                             <div class="card-price-cont">
-                                <p class="card-old-price">AED. 12995</p>
+                                <p class="card-old-price">AED. 13500</p>
                                 <p class="card-price">AED. 12995</p>
                             </div>
                         </div>

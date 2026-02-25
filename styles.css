@@ -1877,10 +1877,11 @@ input[type=number] {
   padding: 0;
 }
 
-.compare-price-cont .price-cont > * {
+.compare-price-cont .price-cont > *, span {
   text-align: center;
   color: var(--nt-200);
   font-size: 20px;
+  font-weight: 600;
 }
 
 .compare-content-cont {
@@ -2021,7 +2022,7 @@ input[type=number] {
     color: var(--p-400);
   }
 
-  .compare-header .price-cont > * {
+  .compare-header .price-cont > *, span {
     color: var(--nt-500);
   }
 

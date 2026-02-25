@@ -132,16 +132,18 @@ p.small {
   min-height: 100vh;
 }
 
+@media (max-width: 768px) {
+  .main-msg {
+    width: 80%;
+  }
+}
+
 .main-msg li > p {
   margin: 0;
 }
 
 .main-msg span {
   color: var(--p-400);
-}
-
-.main-msg .btn-main {
-  font-size: 16px;
 }
 
 .mid-section {

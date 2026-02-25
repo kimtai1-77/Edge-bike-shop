@@ -2,26 +2,42 @@
 
 // Run once on page load
 document.addEventListener("DOMContentLoaded", () => {
-  updateCarouselDiscounts();
-  updateDiscountMain();
   selectBikeByColour();
-  
+  updateCarouselDiscounts();
+})
 
-  // Set up MutationObserver to watch for price changes
-  const observer = new MutationObserver(() => {
-    updateCarouselDiscounts();
-    updateDiscountMain();
-  });
 
-  // Target: watch all carousels for changes in child nodes/text
-  document.querySelectorAll(".carousel").forEach(carousel => {
-    observer.observe(carousel, {
-      subtree: true,       // watch all descendants
-      childList: true,     // watch for added/removed nodes
-      characterData: true, // watch for text changes
+
+function updateCarouselDiscounts() {
+  const carousels = document.querySelectorAll(".carousel");
+
+  carousels.forEach(carousel => {
+    const cards = carousel.querySelectorAll(".card");
+
+    cards.forEach(card => {
+      const oldPriceEl = card.querySelector(".card-old-price");
+      const newPriceEl = card.querySelector(".card-price");
+      const discountEl = card.querySelector(".card-discount");
+
+      // Skip cards without full price/discount structure
+      if (!oldPriceEl || !newPriceEl || !discountEl) return;
+
+      // Extract numeric values only
+      const oldPrice = parseFloat(oldPriceEl.textContent.replace(/[^0-9.]/g, ""));
+      const newPrice = parseFloat(newPriceEl.textContent.replace(/[^0-9.]/g, ""));
+
+      if (oldPrice > newPrice) {
+        const discount = Math.round(((oldPrice - newPrice) / oldPrice) * 100);
+        discountEl.textContent = `${discount}% Off`;
+        discountEl.style.display = "block";
+        oldPriceEl.style.display = "inline"; // show old price
+      } else {
+        discountEl.style.display = "none";
+        oldPriceEl.style.display = "none"; // hide old price if equal or less
+      }
     });
   });
-});
+}
 
 
 
@@ -202,43 +218,6 @@ sizeBoxes.forEach(currentItem => {
 
 
 
-// percentage discount calculator - carousel only
-
-function updateCarouselDiscounts() {
-  const carousels = document.querySelectorAll(".carousel");
-
-  carousels.forEach(carousel => {
-    const cards = carousel.querySelectorAll(".card");
-
-    cards.forEach(card => {
-      const oldPriceEl = card.querySelector(".card-old-price");
-      const newPriceEl = card.querySelector(".card-price");
-      const discountEl = card.querySelector(".card-discount");
-
-      // Skip cards without full price/discount structure
-      if (!oldPriceEl || !newPriceEl || !discountEl) return;
-
-      // Extract numeric values only
-      const oldPrice = parseFloat(oldPriceEl.textContent.replace(/[^0-9.]/g, ""));
-      const newPrice = parseFloat(newPriceEl.textContent.replace(/[^0-9.]/g, ""));
-
-      if (oldPrice > newPrice) {
-        const discount = Math.round(((oldPrice - newPrice) / oldPrice) * 100);
-        discountEl.textContent = `${discount}% Off`;
-        discountEl.style.display = "block";
-        oldPriceEl.style.display = "inline"; // show old price
-      } else {
-        discountEl.style.display = "none";
-        oldPriceEl.style.display = "none"; // hide old price if equal or less
-      }
-    });
-  });
-}
-
-
-
-
-
 // increment / decrement quantity
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -286,33 +265,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-
-
-
-function updateDiscountMain() {
-    const bikeDetails = document.querySelector(".product-page");
-
-      const oldPriceEl = bikeDetails.querySelector(".old-price");
-      const newPriceEl = bikeDetails.querySelector(".new-price");
-      const discountEl = bikeDetails.querySelector(".discount-tab");
-
-      // Skip product pages without full price/discount structure
-      if (!oldPriceEl || !newPriceEl || !discountEl) return;
-
-      // Extract numeric values only
-      const oldPrice = parseFloat(oldPriceEl.textContent.replace(/[^0-9.]/g, ""));
-      const newPrice = parseFloat(newPriceEl.textContent.replace(/[^0-9.]/g, ""));
-
-      if (oldPrice > newPrice) {
-        const discount = Math.round(((oldPrice - newPrice)/oldPrice) * 100);
-        discountEl.textContent = `${discount}% Off`;
-        discountEl.style.display = "block";
-        oldPriceEl.style.display = "inline";
-      } else {
-        discountEl.style.display = "none";
-        oldPriceEl.style.display = "none";
-      }
-    };
 
 
 

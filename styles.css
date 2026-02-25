@@ -136,6 +136,10 @@ p.small {
   margin: 0;
 }
 
+.main-msg span {
+  color: var(--p-400);
+}
+
 .main-msg .btn-main {
   font-size: 16px;
 }
@@ -1877,7 +1881,7 @@ input[type=number] {
   padding: 0;
 }
 
-.compare-price-cont .price-cont > *, span {
+.compare-price-cont .price-cont > *, span.new-price {
   text-align: center;
   color: var(--nt-200);
   font-size: 20px;
@@ -1987,7 +1991,7 @@ input[type=number] {
 
 
 @media (max-width: 1024px) {
-    .compare-price-cont * {
+    .compare-price-cont span.new-price {
       font-size: 14px;
     }
 }
@@ -2001,6 +2005,10 @@ input[type=number] {
 
   .compare-container {
     flex-direction: column;
+  }
+
+  .compare-price-cont span.new-price {
+    color: var(--nt-500);
   }
 
   .compare-side {
@@ -2020,10 +2028,6 @@ input[type=number] {
 
   .compare-header .compare-title {
     color: var(--p-400);
-  }
-
-  .compare-header .price-cont > *, span {
-    color: var(--nt-500);
   }
 
   .compare-content {

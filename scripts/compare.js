@@ -18,6 +18,10 @@
  */
 
 
+function normalizeKey(title) {
+  return title.toLowerCase().replace(/\s+/g, '-');
+}
+
 function createCompareLightbox(hostPageData, targetPageData) {
   // Create overlay
   const overlay = document.createElement('div');
@@ -51,10 +55,14 @@ function createCompareLightbox(hostPageData, targetPageData) {
 
   const leftPrice = document.createElement('div');
   leftPrice.className = 'compare-price-cont';
-  if (hostPageData.priceElement) {
-    const clonedPrice = hostPageData.priceElement.cloneNode(true);
-    leftPrice.appendChild(clonedPrice);
-    hideCompareExtras(leftPrice);
+
+  const leftKey = normalizeKey(hostPageData.title);
+  if (productStore[leftKey]) {
+    const newPriceEl = document.createElement('span');
+    newPriceEl.className = 'new-price';
+    newPriceEl.textContent = `AED. ${productStore[leftKey].newPrice}`;
+    leftPrice.appendChild(newPriceEl);
+    //hideCompareExtras(leftPrice);
   }
 
   leftHeader.appendChild(leftTitle);
@@ -67,6 +75,7 @@ function createCompareLightbox(hostPageData, targetPageData) {
   const leftImgSection = document.createElement('div');
   leftImgSection.className = 'compare-img';
   leftImgSection.appendChild(hostPageData.imgElement.cloneNode(true));
+  leftImgSection.querySelector('.magnify-icon')?.remove();
 
   const leftContentSection = document.createElement('div');
   leftContentSection.className = 'compare-content';
@@ -91,10 +100,14 @@ function createCompareLightbox(hostPageData, targetPageData) {
 
   const rightPrice = document.createElement('div');
   rightPrice.className = 'compare-price-cont';
-  if (targetPageData.priceElement) {
-    const clonedPrice = targetPageData.priceElement.cloneNode(true);
-    rightPrice.appendChild(clonedPrice);
-    hideCompareExtras(rightPrice);
+
+  const rightKey = normalizeKey(targetPageData.title);
+  if (productStore[rightKey]) {
+    const newPriceEl = document.createElement('span');
+    newPriceEl.className = 'new-price';
+    newPriceEl.textContent = `AED. ${productStore[rightKey].newPrice}`;
+    rightPrice.appendChild(newPriceEl);
+    //hideCompareExtras(rightPrice);
   }
 
   rightHeader.appendChild(rightTitle);
@@ -107,6 +120,7 @@ function createCompareLightbox(hostPageData, targetPageData) {
   const rightImgSection = document.createElement('div');
   rightImgSection.className = 'compare-img';
   rightImgSection.appendChild(targetPageData.imgElement.cloneNode(true));
+  rightImgSection.querySelector('.magnify-icon')?.remove();
 
   const rightContentSection = document.createElement('div');
   rightContentSection.className = 'compare-content';
@@ -129,13 +143,14 @@ function createCompareLightbox(hostPageData, targetPageData) {
   overlay.appendChild(lightbox);
   document.body.appendChild(overlay);
 
-  // Final cleanup: ensure any discount tabs inside lightbox are hidden
+  // Final cleanup
   hideCompareExtras(lightbox);
 
   overlay.addEventListener('click', (e) => {
     if (e.target === overlay) overlay.remove();
   });
 }
+
 
 
 // --- Dynamic helper: fetch page and extract required elements ---
@@ -211,7 +226,7 @@ async function handleCompareButtonClick(event) {
   } catch (err) {
     // Graceful fallback: show simple message
     hideCompareLoader();
-    alert('Unable to open comparison. See console for details.');
+    alert('Unable to open comparison - One or more key details is missing.\n\nPlease inform us about it through the \'contact\' tab.');
   }
 }
 
@@ -264,7 +279,7 @@ window.openCompare = async function openCompare(elOrEvent) {
     hideCompareLoader();
   } catch (err) {
     hideCompareLoader();
-    alert('Unable to open comparison. See console for details.');
+    alert('Unable to open comparison - One or more key details is missing.\n\nPlease inform us about it through the \'contact\' tab.');
   }
 };
 
